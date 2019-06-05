@@ -51,7 +51,6 @@ jobs:
           password: $DOCKERHUB_PASSWORD
         environment:
           MIX_ENV: prod
-          NODE_ENV: production
     steps:
       - checkout
       - run: mix local.hex --force
@@ -85,7 +84,7 @@ jobs:
           command: npm i --prefix assets
       - run:
           name: Transpile frontend code
-          command: npm run deploy --prefix assets
+          command: NODE_ENV=production npm run deploy --prefix assets
       - run:
           name: Digest Frontend
           command: |
