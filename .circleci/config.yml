@@ -91,10 +91,10 @@ jobs:
             MIX_ENV=prod mix phx.digest;
       - save_cache:
           key: v1-npm-cache
-          path: "assets/node_modules"
+          paths: "assets/node_modules"
       - save_cache:
           key: v1-static-cache
-          path: "priv/static"
+          paths: "priv/static"
       - run:
           name: Build App release
           command: mix release --env=prod
