@@ -8,14 +8,13 @@
 |> Enum.map(&Code.eval_file(&1))
 
 use Mix.Releases.Config,
-    # This sets the default release built by `mix release`
-    default_release: :default,
-    # This sets the default environment used by `mix release`
-    default_environment: Mix.env()
+  # This sets the default release built by `mix release`
+  default_release: :default,
+  # This sets the default environment used by `mix release`
+  default_environment: Mix.env()
 
 # For a full list of config options for both releases
 # and environments, visit https://hexdocs.pm/distillery/config/distillery.html
-
 
 # You may define one or more environments in this file,
 # an environment's settings will override those of a release
@@ -29,16 +28,16 @@ environment :dev do
   # It is recommended that you build with MIX_ENV=prod and pass
   # the --env flag to Distillery explicitly if you want to use
   # dev mode.
-  set dev_mode: true
-  set include_erts: false
-  set cookie: :"zMn:Y_<HM*9%u1_i3ck4O&q5C:Tq0xen8]^dGTHb8B!vs2&~BcDYR_FGRCiU@D0Z"
+  set(dev_mode: true)
+  set(include_erts: false)
+  set(cookie: :"zMn:Y_<HM*9%u1_i3ck4O&q5C:Tq0xen8]^dGTHb8B!vs2&~BcDYR_FGRCiU@D0Z")
 end
 
 environment :prod do
-  set include_erts: true
-  set include_src: false
-  set cookie: :"$NE[Asb))X8%9FqIx=uuBLdrKhi{P9R`&`e=%[YRG3FTP&>CF(1V?(g2}>|3s2jw"
-  set vm_args: "rel/vm.args"
+  set(include_erts: true)
+  set(include_src: false)
+  set(cookie: :"$NE[Asb))X8%9FqIx=uuBLdrKhi{P9R`&`e=%[YRG3FTP&>CF(1V?(g2}>|3s2jw")
+  set(vm_args: "rel/vm.args")
 end
 
 # You may define one or more releases in this file.
@@ -47,14 +46,19 @@ end
 # will be used by default
 
 release :camp_with_dennis_2019 do
-  set version: current_version(:camp_with_dennis_2019)
-  set applications: [
-    :runtime_tools
-  ]
-  set :commands: [
-    "migrate": "rel/commands/migrate.sh",
-    "rollback": "rel/commands/rollback.sh",
-    "seed": "rel/commands/seed.sh"
-  ]
-end
+  set(version: current_version(:camp_with_dennis_2019))
 
+  set(
+    applications: [
+      :runtime_tools
+    ]
+  )
+
+  set(
+    commands: [
+      migrate: "rel/commands/migrate.sh",
+      rollback: "rel/commands/rollback.sh",
+      seed: "rel/commands/seed.sh"
+    ]
+  )
+end
