@@ -55,16 +55,46 @@ jobs:
       - checkout
       - run: mix local.hex --force
       - run: mix local.rebar
+      - restore_cache:
+          keys:
+            -v1-mix-cache
+      - restore_cache:
+          keys:
+            -v1-build-cache
       - run:
           name: Get Mix dependencies
           command: mix deps.get
       - run:
           name: Compile App
           command: mix compile
+      - save_cache:
+          key: v1-mix-cache
+          paths: "deps"
+      - save_cache:
+          key: v1-build-cache
+          paths: "_build"
+      - restore_cache:
+          keys:
+            -v1-npm-cache
+      - restore_cache:
+          keys:
+            -v1-static-cache
+      - run:
+          name: Install frontend dependencies
+          command: npm i --prefix assets
+      - run:
+          name: Transpile frontend code
+          command: npm run deploy --prefix assets
       - run:
           name: Digest Frontend
           command: |
             MIX_ENV=prod mix phx.digest;
+      - save_cache:
+          key: v1-npm-cache
+          path: "assets/node_modules"
+      - save_cache:
+          key: v1-static-cache
+          path: "priv/static"
       - run:
           name: Build App release
           command: mix release --env=prod
