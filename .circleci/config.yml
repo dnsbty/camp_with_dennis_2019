@@ -98,6 +98,9 @@ jobs:
       - run:
           name: Build App release
           command: mix release --env=prod
+      - run:
+          name: Printing out secrets directory
+          command: ls /var/apps/camp_with_dennis_2019
       - deploy:
           name: Deploy to Production
           command: |
