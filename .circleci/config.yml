@@ -57,10 +57,10 @@ jobs:
       - run: mix local.rebar
       - restore_cache:
           keys:
-            -v1-mix-cache
+            - v1-mix-cache
       - restore_cache:
           keys:
-            -v1-build-cache
+            - v1-build-cache
       - run:
           name: Get Mix dependencies
           command: mix deps.get
@@ -75,10 +75,10 @@ jobs:
           paths: "_build"
       - restore_cache:
           keys:
-            -v1-npm-cache
+            - v1-npm-cache
       - restore_cache:
           keys:
-            -v1-static-cache
+            - v1-static-cache
       - run:
           name: Install frontend dependencies
           command: npm i --prefix assets
