@@ -51,6 +51,7 @@ jobs:
           password: $DOCKERHUB_PASSWORD
         environment:
           MIX_ENV: prod
+          NODE_ENV: production
     steps:
       - checkout
       - run: mix local.hex --force
