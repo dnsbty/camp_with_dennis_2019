@@ -51,5 +51,10 @@ release :camp_with_dennis_2019 do
   set applications: [
     :runtime_tools
   ]
+  set :commands: [
+    "migrate": "rel/commands/migrate.sh",
+    "rollback": "rel/commands/rollback.sh",
+    "seed": "rel/commands/seed.sh"
+  ]
 end
 
