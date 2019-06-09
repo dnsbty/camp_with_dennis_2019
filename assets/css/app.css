@@ -11,6 +11,27 @@
  */
  @tailwind base;
 
+  h1 {
+    @apply text-2xl;
+  }
+
+  h2 {
+    @apply text-xl;
+  }
+
+  a {
+    @apply text-pink-600 font-semibold;
+  }
+
+  a:hover {
+    @apply text-pink-800;
+  }
+
+  .illustration {
+    width: 180%;
+    margin: -70% 0 2rem -40%;
+  }
+
  /**
   * This injects any component classes registered by plugins.
   *
@@ -61,3 +82,34 @@
   * @import "utilities/skew-transforms";
   */
 
+  .input {
+    @apply appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 leading-tight;
+  }
+
+  .input:focus {
+    @apply outline-none bg-white border-pink-900; 
+  }
+
+  .btn {
+    @apply shadow bg-pink-600 text-white font-bold py-2 px-4 w-full rounded block text-center;
+  }
+
+  .btn:hover {
+    @apply bg-pink-800 text-white;
+  }
+
+  .btn:focus {
+    @apply shadow-outline outline-none;
+  }
+
+  .form-group {
+    @apply flex flex-wrap items-baseline justify-between;
+  }
+
+  .input-error-text {
+    @apply inline-block text-xs text-pink-600 float-right;
+  }
+
+  .has-error {
+    @apply border-pink-600 border-2;
+  }

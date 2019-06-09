@@ -17,10 +17,7 @@ defmodule CampWithDennis2019Web.Router do
     pipe_through :browser
 
     get "/", PageController, :index
+    get "/register", RegistrationController, :index
+    post "/register", RegistrationController, :create
   end
-
-  # Other scopes may use custom stacks.
-  # scope "/api", CampWithDennis2019Web do
-  #   pipe_through :api
-  # end
 end

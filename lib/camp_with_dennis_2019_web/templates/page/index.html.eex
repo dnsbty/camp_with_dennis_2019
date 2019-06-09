@@ -1,6 +1,35 @@
-<div class="text-center mt-64">
-  <h1 class="text-3xl text-purple-600">Americamping 2019</h1>
-  <p class="text-md text-gray-700">Payson Lakes Campground</p>
-  <p class="text-md text-gray-700">July 5-6</p>
-  <p class="text-md mt-16 text-gray-400">Signup available soon</p>
+<div class="flex justify-center p-8 overflow-x-hidden">
+  <div class="w-full max-w-lg">
+    <div class="illustration">
+      <%= render @view_module, "campfire.html" %>
+    </div>
+    <h1 class="text-3xl text-center text-pink-600">Americamping 2019</h1>
+    <p class="text-md text-center text-gray-600">Payson Lakes Campground</p>
+    <p class="text-md text-center text-gray-600 mb-12">July 5-6 • $20 per person</p>
+    <div class="flex flex-wrap justify-center -mx-3 mb-12">
+      <div class="w-full md:w-1/2 px-3">
+        <%=button "Sign Me Up!", to: Routes.registration_path(@conn, :index), class: "btn" %>
+      </div>
+    </div>
+    <p class="mb-2 text-gray-700 mb-6">
+      Americamping is a now 4-year-old tradition in which we celebrate the birth of our great nation by spending time within her natural splendor.
+      This year we will pitch our tents at the <a href="https://goo.gl/maps/FdgjUBG7TX4xz1rD7">Payson Lakes Campground</a>.
+      Hidden among the pines between McClellan Lake, Box Lake, and the Big East Reservoir, this gorgeous site is only a 50 minute drive from my home in the Provo-Orem metropolitan area.
+    </p>
+    <p class="mb-2 text-gray-700 mb-6">
+      This year I've decided to do away with the invite-only requirement.
+      Invite your friends.
+      Invite your mom.
+      It's going to be a great time for everyone.
+    </p>
+    <p class="mb-2 text-gray-700 mb-6">
+      Any other questions?
+      <a href="sms:+12107718253">Shoot me a text!</a>
+    </p>
+    <div class="flex flex-wrap justify-center -mx-3 sm:hidden">
+      <div class="w-full md:w-1/2 px-3">
+        <%=button "Sign Me Up!", to: Routes.registration_path(@conn, :index), class: "btn" %>
+      </div>
+    </div>
+  </div>
 </div>

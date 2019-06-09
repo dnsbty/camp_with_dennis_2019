@@ -11,6 +11,9 @@
     <main role="main">
       <%= render @view_module, @view_template, assigns %>
     </main>
+    <footer class="text-center text-gray-400 italic text-xs py-10">
+      Copyright &copy; 2019 Dennis Beatty
+    </footer>
     <script type="text/javascript" src="<%= Routes.static_path(@conn, "/js/app.js") %>"></script>
   </body>
 </html>

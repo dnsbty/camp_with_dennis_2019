@@ -1,0 +1,34 @@
+<div class="p-4 flex justify-center p-8">
+  <div class="w-full max-w-lg">
+    <h1 class="text-pink-600 block mb-4">You're in! Well almost...</h1>
+    <p class="mb-4">In order to cover all the costs, we're asking everyone to pitch in $20.</p>
+    <h2 class="text-gray-600 block mb-4">What does this get you?</h2>
+    <ul class="mb-6 list-disc">
+      <li class="mb-3">A super awesome camping experience with a bunch of amazing people that you're sure to love</li>
+      <li class="mb-3">A super amazing breakfast cooked by world renowned chef Dennis Beatty (and hopefully help from others too)</li>
+      <li class="mb-3">A really really ridiculously good looking tshirt*</li>
+    </ul>
+    <h2 class="text-gray-600 block mb-4">Ready to Pay?</h2>
+    <p class="mb-4">
+      We're going to handle all payments through Venmo.
+      Simply tap the button below to pay.
+    </p>
+    <p class="mb-12">
+      Dennis will text you at the number you provided to confirm when we see your payment come in.
+      It may take a couple of hours for him to notice it.
+    </p>
+    <div class="flex flex-wrap justify-center -mx-3 mb-12">
+      <div class="w-full md:w-1/2 px-3">
+        <%= link("Pay with Venmo", to: {:venmo, "//paycharge?txn=pay&recipients=dnsbty&amount=20&note=🇺🇸🏕"}, class: "btn") %>
+      </div>
+    </div>
+    <p class="mb-4 text-xs text-gray-500 italics">
+      * There is no guarantee on how good the shirts look.
+      Also it's possible that they won't be printed in time.
+      If this is the case, that portion of the fee will be refunded or we will try to get shirts to you after the event.
+    </p>
+    <p class="mb-4 text-xs text-gray-500 italics">
+      All other refunds will be possible until 14 days before the event. After that time only 50% of the fee can be refunded.
+    </p>
+  </div>
+</div>
