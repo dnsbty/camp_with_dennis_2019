@@ -10,13 +10,5 @@ config :logger, level: :info
 
 config :camp_with_dennis_2019, CampWithDennis2019Web.Endpoint, server: true
 
-config :camp_with_dennis_2019, CampWithDennis2019.Repo,
-  adapter: Ecto.Adapters.Postgres,
-  username: "postgres",
-  password: "postgres",
-  database: "camp_with_dennis_2019_prod",
-  hostname: "localhost",
-  pool_size: 15
-
 # Finally import any environment specific configuration
 import_config "prod.secret.exs"
