@@ -113,3 +113,11 @@
   .has-error {
     @apply border-pink-600 border-2;
   }
+
+  @keyframes flickerAnimation {
+    50%  { fill: #ED64A6; }
+  }
+
+  .animate-flicker {
+    animation: flickerAnimation 3s infinite;
+  }
