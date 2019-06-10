@@ -62,24 +62,15 @@ jobs:
       - restore_cache:
           keys:
             - v1-build-cache
-      - run:
-          name: Get Mix dependencies
-          command: mix deps.get
-      - run:
-          name: Compile App
-          command: mix compile
-      - save_cache:
-          key: v1-mix-cache
-          paths: "deps"
-      - save_cache:
-          key: v1-build-cache
-          paths: "_build"
       - restore_cache:
           keys:
             - v1-npm-cache
       - restore_cache:
           keys:
             - v1-static-cache
+      - run:
+          name: Get Mix dependencies
+          command: mix deps.get
       - run:
           name: Install frontend dependencies
           command: npm i --prefix assets
@@ -90,6 +81,12 @@ jobs:
           name: Digest Frontend
           command: |
             MIX_ENV=prod mix phx.digest;
+      - save_cache:
+          key: v1-mix-cache
+          paths: "deps"
+      - save_cache:
+          key: v1-build-cache
+          paths: "_build"
       - save_cache:
           key: v1-npm-cache
           paths: "assets/node_modules"
