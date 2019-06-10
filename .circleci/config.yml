@@ -53,9 +53,9 @@ jobs:
           MIX_ENV: prod
     steps:
       - checkout
+      - run: cp /var/apps/camp_with_dennis/prod.secret.exs config/prod.secret.exs
       - run: mix local.hex --force
       - run: mix local.rebar
-      - run: cp /var/apps/camp_with_dennis/prod.secret.exs config/prod.secret.exs
       - restore_cache:
           keys:
             - v1-mix-cache
