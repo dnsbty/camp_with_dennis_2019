@@ -19,4 +19,4 @@ config :camp_with_dennis_2019, CampWithDennis2019.Repo,
   pool_size: 15
 
 # Finally import any environment specific configuration
-import_config "/var/apps/camp_with_dennis_2019/*.exs"
+import_config "prod.secret.exs"
