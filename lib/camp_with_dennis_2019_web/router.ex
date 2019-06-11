@@ -19,5 +19,6 @@ defmodule CampWithDennis2019Web.Router do
     get "/", PageController, :index
     get "/register", RegistrationController, :index
     post "/register", RegistrationController, :create
+    get "/share", RegistrationController, :share
   end
 end

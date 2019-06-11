@@ -17,4 +17,8 @@ defmodule CampWithDennis2019Web.RegistrationController do
         render(conn, "index.html", changeset: changeset)
     end
   end
+
+  def share(conn, _) do
+    render(conn, "share.html")
+  end
 end
