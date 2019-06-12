@@ -6,6 +6,8 @@ defmodule CampWithDennis2019.Application do
   use Application
 
   def start(_type, _args) do
+    CampWithDennis2019.SmsVerification.start()
+
     # List all child processes to be supervised
     children = [
       # Start the Ecto repository

@@ -36,6 +36,7 @@ defmodule CampWithDennis2019.MixProject do
       {:distillery, "~> 2.0"},
       {:ecto_sql, "~> 3.0"},
       {:gettext, "~> 0.11"},
+      {:httpoison, "~> 1.5"},
       {:jason, "~> 1.0"},
       {:phoenix, "~> 1.4.6"},
       {:phoenix_ecto, "~> 4.0"},

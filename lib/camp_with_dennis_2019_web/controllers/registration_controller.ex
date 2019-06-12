@@ -10,7 +10,7 @@ defmodule CampWithDennis2019Web.RegistrationController do
 
   def create(conn, %{"registrant" => params}) do
     case Registration.register(params) do
-      {:ok, registrant} ->
+      {:ok, _registrant} ->
         render(conn, "pay.html")
 
       {:error, changeset} ->
