@@ -12,14 +12,14 @@
 </div>
 
 <script type="text/javascript">
-  window.location.href = 'venmo://paycharge?txn=pay&recipients=dnsbty&amount=20&note=🇺🇸🏕';
-
-var textMessageCopy = `Hi friend! 👋 \n
+  var textMessageCopy = `Hi friend! 👋 \n
 I'll be going camping with some awesome people on July 5th-6th to celebrate America's birthday.\n
 Sign up at the website below so you can come with me! 🇺🇸🧨🏕\n
 https://campwithdennis.com`;
 
   document.getElementById('textMessageContent').value = textMessageCopy;
+
+  window.location.href = 'venmo://paycharge?txn=pay&recipients=dnsbty&amount=20&note=🇺🇸🏕';
 
   window.Clipboard = (function(window, document, navigator) {
       var textArea,

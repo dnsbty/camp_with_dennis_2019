@@ -19,7 +19,7 @@
     </p>
     <div class="flex flex-wrap justify-center -mx-3 mb-12">
       <div class="w-full md:w-1/2 px-3">
-        <%= link("Pay with Venmo", to: {:venmo, "//paycharge?txn=pay&recipients=dnsbty&amount=20&note=🇺🇸🏕"}, class: "btn") %>
+        <%= link("Pay with Venmo", to: Routes.registration_path(@conn, :share), class: "btn") %>
       </div>
     </div>
     <p class="mb-4 text-xs text-gray-500 italics">
