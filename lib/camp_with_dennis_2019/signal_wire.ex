@@ -30,13 +30,11 @@ defmodule SignalWire do
 
     encoded_body = Jason.encode!(body)
 
-    case enabled() do
-      true ->
-        HTTPoison.post(url, encoded_body, headers)
-
-      _ ->
-        log_message(recipient, message)
-        {:ok, message}
+    if enabled() |> IO.inspect() == true do
+      HTTPoison.post(url, encoded_body, headers)
+    else
+      log_message(recipient, message)
+      {:ok, message}
     end
   end
 

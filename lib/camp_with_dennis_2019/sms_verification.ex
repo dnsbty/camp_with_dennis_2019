@@ -3,6 +3,9 @@ defmodule CampWithDennis2019.SmsVerification do
   Handles the backend logic for SMS verification of phone numbers.
   """
 
+  use Ecto.Schema
+  import Ecto.Changeset
+
   @table_name :sms_verification
   @code_length 6
   @message_base "Thanks for signing up for Americamping! Your verification code is "
@@ -23,22 +26,41 @@ defmodule CampWithDennis2019.SmsVerification do
     code = generate_code()
     store_code(phone_number, code)
     message = @message_base <> code
+    phone_number = "+1" <> String.replace(phone_number, ~r/[^\d]/, "")
     SignalWire.send_message(phone_number, message)
   end
 
-  @spec verify(phone_number :: String.t(), code :: String.t()) :: :ok | :error
-  def verify(phone_number, code) do
-    case get_code(phone_number) do
-      ^code ->
-        delete_code(phone_number)
-        :ok
+  @spec verify(map()) :: :ok | :error
+  def verify(params) do
+    params
+    |> verification_changeset()
+    |> apply_action(:update)
+  end
 
-      _ ->
-        :error
-    end
+  def verification_changeset(attrs \\ %{}) do
+    types = %{phone_number: :string, verification_code: :string}
+
+    {%{}, types}
+    |> cast(attrs, [:phone_number, :verification_code])
+    |> validate_required([:phone_number, :verification_code])
+    |> validate_verification()
   end
 
   # private
+  @spec validate_verification(Ecto.Changeset.t()) :: Ecto.Changeset.t()
+  defp validate_verification(changeset) do
+    phone_number = get_field(changeset, :phone_number)
+
+    validate_change(changeset, :verification_code, fn _, code ->
+      if code == get_code(phone_number) do
+        delete_code(phone_number)
+        []
+      else
+        [verification_code: "doesn't match the one sent"]
+      end
+    end)
+  end
+
   @spec delete_code(phone_number :: String.t()) :: String.t()
   defp delete_code(phone_number) do
     :ets.delete(@table_name, phone_number)
