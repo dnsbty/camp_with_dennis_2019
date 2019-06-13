@@ -8,15 +8,17 @@ defmodule CampWithDennis2019Web.Router do
     plug :fetch_flash
     plug :protect_from_forgery
     plug :put_secure_browser_headers
+  end
+
+  pipeline :registrant do
     plug :get_registrant
   end
 
-  pipeline :api do
-    plug :accepts, ["json"]
+  pipeline :admin do
   end
 
   scope "/", CampWithDennis2019Web do
-    pipe_through :browser
+    pipe_through [:browser, :registrant]
 
     get "/", PageController, :index
     get "/register", RegistrationController, :index
@@ -24,5 +26,11 @@ defmodule CampWithDennis2019Web.Router do
     get "/share", RegistrationController, :share
     post "/verify-phone", RegistrationController, :verify_phone
     post "/new-verification", RegistrationController, :new_verification
+  end
+
+  scope "/admin", CampWithDennis2019Web do
+    pipe_through [:browser, :admin]
+
+    get "/login", AdminController, :login
   end
 end
