@@ -47,6 +47,18 @@ defmodule CampWithDennis2019Web.RegistrationController do
     end
   end
 
+  def new_verification(conn, _) do
+    registrant = conn.assigns.registrant
+    SmsVerification.send(registrant.phone_number)
+
+    changeset =
+      registrant
+      |> Map.take([:phone_number])
+      |> SmsVerification.verification_changeset()
+
+    render(conn, "verify_phone.html", changeset: changeset, resent: true)
+  end
+
   def share(conn, _) do
     render(conn, "share.html")
   end
