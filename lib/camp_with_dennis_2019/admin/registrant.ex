@@ -7,6 +7,7 @@ defmodule CampWithDennis2019.Admin.Registrant do
     field :gender, :string
     field :last_name, :string
     field :paid_at, :naive_datetime
+    field :phone_number, :string
     field :phone_verified_at, :naive_datetime
     field :shirt_size, :string
     field :inserted_at, :naive_datetime

@@ -26,7 +26,6 @@ defmodule CampWithDennis2019.SmsVerification do
     code = generate_code()
     store_code(phone_number, code)
     message = @message_base <> code
-    phone_number = "+1" <> String.replace(phone_number, ~r/[^\d]/, "")
     SignalWire.send_message(phone_number, message)
   end
 

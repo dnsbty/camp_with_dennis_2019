@@ -18,6 +18,7 @@ defmodule SignalWire do
   end
 
   def send_message(recipient, message) do
+    recipient = "+1" <> String.replace(recipient, ~r/[^\d]/, "")
     url = "#{base_url()}/api/laml/2010-04-01/Accounts/#{account_sid()}/Messages.json"
     auth = Base.encode64("#{account_sid()}:#{account_token()}")
     headers = [{"Authorization", "Basic #{auth}"}, {"Content-Type", "application/json"}]

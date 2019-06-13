@@ -46,4 +46,21 @@ defmodule CampWithDennis2019.Admin do
   def phone_changeset do
     Login.phone_changeset(%{})
   end
+
+  def send_payment_confirmation_text(registrant) do
+    text =
+      Enum.join(
+        [
+          "Hey #{registrant.first_name} 👋",
+          "We got your payment, so you're officially on the list for Americamping! 🇺🇸🏕",
+          "I'll send you another text the week of the trip with a packing list and other details.",
+          "I'm excited to have you along 😃"
+        ],
+        "\n\n"
+      )
+
+    registrant
+    |> Map.get(:phone_number)
+    |> SignalWire.send_message(text)
+  end
 end
