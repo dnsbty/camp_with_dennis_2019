@@ -11,8 +11,6 @@ defmodule CampWithDennis2019Web.ErrorHelpers do
   def error_tag(form, field, opts \\ []) do
     class = Keyword.get(opts, :class)
 
-    IO.inspect(field)
-
     Enum.map(Keyword.get_values(form.errors, field), fn error ->
       content_tag(:span, translate_error(error), class: class)
     end)

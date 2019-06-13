@@ -8,6 +8,7 @@ defmodule CampWithDennis2019.Registration.Registrant do
     field :last_name, :string
     field :paid_at, :naive_datetime
     field :phone_number, :string
+    field :phone_verified_at, :naive_datetime
     field :shirt_size, :string
 
     timestamps()
@@ -18,5 +19,11 @@ defmodule CampWithDennis2019.Registration.Registrant do
     registrant
     |> cast(attrs, [:first_name, :last_name, :gender, :phone_number, :shirt_size])
     |> validate_required([:first_name, :last_name, :gender, :phone_number, :shirt_size])
+  end
+
+  @doc false
+  def phone_verification_changeset(registrant) do
+    now = NaiveDateTime.truncate(NaiveDateTime.utc_now(), :second)
+    change(registrant, %{phone_verified_at: now})
   end
 end
