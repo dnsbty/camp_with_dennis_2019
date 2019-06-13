@@ -2,7 +2,8 @@ const purgecss = require('@fullhuman/postcss-purgecss')({
   content: [
     '../lib/camp_with_dennis_2019_web/templates/**/*.html.eex'
   ],
-  defaultExtractor: content => content.match(/[A-Za-z0-9-_:/]+/g) || []
+  defaultExtractor: content => content.match(/[A-Za-z0-9-_:/]+/g) || [],
+  whitelist: ['has-error']
 })
 
 module.exports = {
