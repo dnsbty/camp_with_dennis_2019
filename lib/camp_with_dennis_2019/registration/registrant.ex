@@ -19,6 +19,7 @@ defmodule CampWithDennis2019.Registration.Registrant do
     registrant
     |> cast(attrs, [:first_name, :last_name, :gender, :phone_number, :shirt_size])
     |> validate_required([:first_name, :last_name, :gender, :phone_number, :shirt_size])
+    |> unique_constraint(:phone_number)
   end
 
   @doc false
