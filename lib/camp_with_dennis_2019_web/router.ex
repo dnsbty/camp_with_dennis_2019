@@ -14,7 +14,12 @@ defmodule CampWithDennis2019Web.Router do
     plug :get_registrant
   end
 
+  pipeline :api do
+    plug :accepts, ["json"]
+  end
+
   pipeline :admin do
+    plug CampWithDennis2019Web.AdminAuth
   end
 
   scope "/", CampWithDennis2019Web do
@@ -29,8 +34,10 @@ defmodule CampWithDennis2019Web.Router do
   end
 
   scope "/admin", CampWithDennis2019Web do
-    pipe_through [:browser, :admin]
+    pipe_through [:api, :admin]
 
     get "/login", AdminController, :login
+    get "/registrants", AdminController, :registrants
+    post "/registrants/:id/mark_paid", AdminController, :mark_paid
   end
 end

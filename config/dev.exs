@@ -75,4 +75,8 @@ config :phoenix, :stacktrace_depth, 20
 # Initialize plugs at runtime for faster development compilation
 config :phoenix, :plug_init_mode, :runtime
 
+# Configure header for admin API requests
+config :camp_with_dennis_2019,
+  admin_api_token: "admintoken"
+
 import_config "dev.secret.exs"

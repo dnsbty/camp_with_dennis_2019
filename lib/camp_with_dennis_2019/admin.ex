@@ -21,6 +21,19 @@ defmodule CampWithDennis2019.Admin do
   def get_registrant(registrant_id), do: Repo.get(Registrant, registrant_id)
 
   @doc """
+  List everyone who has registered.
+
+  ## Examples
+
+      iex> list_registrants()
+      [%Registrant{}]
+  """
+  @spec list_registrants :: list(Registrant.t())
+  def list_registrants do
+    Repo.all(Registrant)
+  end
+
+  @doc """
   Mark a registrant as having paid.
 
   ## Examples
